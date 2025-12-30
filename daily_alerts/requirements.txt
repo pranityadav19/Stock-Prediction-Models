@@ -1,0 +1,19 @@
+# Stock Prediction Daily Alerts Dependencies
+
+# Data fetching
+yfinance>=0.2.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+
+# Email
+sendgrid>=6.9.0
+
+# Config
+pyyaml>=6.0
+
+# Utilities
+requests>=2.31.0
+lxml>=4.9.0  # For parsing S&P 500 list from Wikipedia

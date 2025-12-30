@@ -1,0 +1,38 @@
+# Stock Prediction Daily Alerts Configuration
+
+email:
+  use_sendgrid: true
+  api_key: ""  # Set via environment variable SENDGRID_API_KEY
+  sender: "pranit.ydv@gmail.com"
+  sender_name: "Stock Prediction Alerts"
+  recipients:
+    - "pranit.ydv@gmail.com"
+    - "ramesh_yadav@hotmail.com"
+
+prediction:
+  # Model parameters
+  lookback_days: 60  # Days of history for prediction
+  forecast_days:
+    short_term: 1    # Daily prediction
+    medium_term: 5   # Weekly prediction
+    long_term: 20    # Monthly prediction
+
+  # Signal thresholds
+  strong_buy_threshold: 0.7   # Confidence above this = STRONG BUY
+  buy_threshold: 0.55         # Confidence above this = BUY
+  sell_threshold: 0.45        # Confidence below this = SELL
+  strong_sell_threshold: 0.3  # Confidence below this = STRONG SELL
+
+  # Filters
+  min_volume: 1000000         # Minimum avg daily volume
+  min_price: 5.0              # Minimum stock price
+  max_stocks_per_signal: 10   # Max stocks per category in email
+
+schedule:
+  run_time: "06:30"  # Before market open (9:30 AM ET)
+  timezone: "America/New_York"
+
+paths:
+  model_cache: "models/cached"
+  results_log: "logs/results"
+  data_cache: "data/cache"
