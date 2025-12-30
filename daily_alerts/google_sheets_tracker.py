@@ -39,8 +39,8 @@ class StockSheetsTracker:
         self.spreadsheet_name = spreadsheet_name
         self.credentials_file = self.CREDENTIALS_DIR / "google_sheets_creds.json"
         self.authorized_user_file = self.CREDENTIALS_DIR / "authorized_user.json"
-        self.client: Optional[gspread.Client] = None
-        self.spreadsheet: Optional[gspread.Spreadsheet] = None
+        self.client: Optional["gspread.Client"] = None
+        self.spreadsheet: Optional["gspread.Spreadsheet"] = None
 
     def connect(self) -> bool:
         """Connect to Google Sheets API using OAuth2 or service account."""
@@ -89,7 +89,7 @@ class StockSheetsTracker:
         logger.error("All authentication methods failed")
         return False
 
-    def get_or_create_spreadsheet(self) -> Optional[gspread.Spreadsheet]:
+    def get_or_create_spreadsheet(self) -> Optional["gspread.Spreadsheet"]:
         """Get existing spreadsheet or create new one."""
         if not self.client:
             if not self.connect():
